@@ -3,15 +3,15 @@
 	$zamanlar=explode(".",$zaman);
 	
 	$balance = [
-		'currency' => 'MPG',
-        'request' => '/api/v1/account/balance',
-        'nonce' => $zamanlar[0]/1
+		'currency' => 'MPG',  //coin symbol
+        'request' => '/api/v1/account/balance', // api request
+        'nonce' => $zamanlar[0]/1  // server time 13 dig. (now)
     ];
 	
 	$balanceJson = json_encode($balance, JSON_UNESCAPED_SLASHES);
 	
-	$apiKey = 'c1504f2e3218dbddb586b3daf1c2fcb8';
-    $apiSecret = 'a3c3719f77ca20ceb35b88a8f6375dbb';
+	$apiKey = 'YOUR-API-KEY';
+    $apiSecret = 'YOUR-SECRET-KEY';
 	
     $payload = base64_encode($balanceJson);	
     $signature = hash_hmac('sha512', $payload, $apiSecret);
